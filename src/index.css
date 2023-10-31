@@ -5,6 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #faf4ff;
+  overflow: hidden;
 }
 
 .image.selected {
@@ -31,14 +33,62 @@ body {
 }
 
 .image img {
-  background: #cfbcbc;
   padding: 20px;
-  flex: 1;
+  flex: 1 1;
   max-width: 100%;
   object-fit: cover;
+  border: 1px solid #ffe5e5;
+  border-radius: 10px;
+  position: relative;
 }
 
 .gallery .large-image {
   grid-row: span 2;
   grid-column: span 2;
+}
+
+.gallery-area {
+  padding: 3%;
+  background: #fff;
+  margin: 2%;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.checkbox-overlay {
+  top: 36px;
+  left: 76px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 999;
+}
+.large-image .checkbox-overlay {
+  top: 63px;
+  left: 187px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  z-index: 999;
+}
+
+.checkbox-overlay input {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.selected {
+  border: 2px solid #007bff;
+}
+.navbar {
+  padding: 20px 20px 0 40px;
 }

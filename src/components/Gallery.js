@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from './Image'
 
+
+
 const Gallery = () => {
-  const images = [
+  const [images, setImages] = useState([
     {
       id: 1,
       url: '/images/image-1.webp',
@@ -17,15 +19,60 @@ const Gallery = () => {
     { id: 7, url: '/images/image-7.webp', isFeature: false, isSelected: false },
     { id: 8, url: '/images/image-8.webp', isFeature: false, isSelected: false },
     { id: 9, url: '/images/image-9.webp', isFeature: false, isSelected: false },
-    { id: 11, url: '/images/image-11.jpeg', isFeature: true, isSelected: false },
-  ]
+    {
+      id: 10,
+      url: '/images/image-10.jpeg',
+      isFeature: false,
+      isSelected: false,
+    },
+    {
+      id: 11,
+      url: '/images/image-11.jpeg',
+      isFeature: true,
+      isSelected: false,
+    },
+  ])
+
+  // Track selected images
+  const [selectedImages, setSelectedImages] = useState([])
+
+
+  const handleSelect = (id) => {
+    const updatedImages = images.map((image) => {
+      if (image.id === id) {
+        image.isSelected = !image.isSelected
+      }
+      return image
+    })
+    setImages(updatedImages)
+
+    // Update the selectedImages array
+    const selected = updatedImages.filter((image) => image.isSelected)
+    setSelectedImages(selected)
+  }
+
+  
 
   return (
-    <div className='gallery'>
-      {images.map((image, index) => (
-        <Image key={image.id} image={image} isLarge={index === 0}/>
-      ))}
-    </div>
+    <>
+      <div className='navbar'>
+        {selectedImages.length > 0 && (
+          <div className='selected-count'>{selectedImages.length} selected</div>
+        )}
+      </div>
+      <div className='gallery-area'>
+        <div className='gallery'>
+          {images.map((image, index) => (
+            <Image
+              key={image.id}
+              image={image}
+              isLarge={index === 0}
+              onSelect={handleSelect}
+            />
+          ))}
+        </div>
+      </div>
+    </>
   )
 }
 
