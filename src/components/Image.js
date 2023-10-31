@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { RiDeleteBin6Line } from 'react-icons/ri'
 
 const Image = ({ image, isLarge, onSelect }) => {
   const handleCheckboxToggle = (e) => {
@@ -15,9 +14,6 @@ const Image = ({ image, isLarge, onSelect }) => {
       </div>
       <img src={image.url} alt='Gallery' />
 
-      <button>
-        <RiDeleteBin6Line />
-      </button>
     </div>
   )
 }

@@ -91,4 +91,19 @@ body {
 }
 .navbar {
   padding: 20px 20px 0 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  border: 1px solid #ffdada;
+  padding: 10px 15px;
+  border-radius: 4px;
+  background: #c4423f;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  box-shadow: 0 0 10px rgba(220, 31, 31, 0.1);
 }

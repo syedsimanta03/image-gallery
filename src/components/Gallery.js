@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Image from './Image'
-
-
+import { RiDeleteBin6Line } from 'react-icons/ri'
 
 const Gallery = () => {
   const [images, setImages] = useState([
@@ -36,7 +35,6 @@ const Gallery = () => {
   // Track selected images
   const [selectedImages, setSelectedImages] = useState([])
 
-
   const handleSelect = (id) => {
     const updatedImages = images.map((image) => {
       if (image.id === id) {
@@ -51,15 +49,16 @@ const Gallery = () => {
     setSelectedImages(selected)
   }
 
-  
-
   return (
     <>
-      <div className='navbar'>
-        {selectedImages.length > 0 && (
-          <div className='selected-count'>{selectedImages.length} selected</div>
-        )}
-      </div>
+      {selectedImages.length > 0 && (
+        <div className='navbar'>
+          <h3 className='selected-count'>{selectedImages.length} selected</h3>
+          <button>
+            <RiDeleteBin6Line /> Delete Files
+          </button>
+        </div>
+      )}
       <div className='gallery-area'>
         <div className='gallery'>
           {images.map((image, index) => (
