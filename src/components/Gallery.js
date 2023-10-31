@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Image from './Image'
 import { RiDeleteBin6Line } from 'react-icons/ri'
+import { IoImageOutline } from 'react-icons/io5'
 
 const Gallery = () => {
   const [images, setImages] = useState([
@@ -49,12 +50,12 @@ const Gallery = () => {
     setSelectedImages(selected)
   }
 
-const handleDelete = () => {
-  // Filter out the selected images to delete
-  const updatedImages = images.filter((image) => !image.isSelected)
-  setImages(updatedImages)
-  setSelectedImages([]) // Clear selected images
-}
+  const handleDelete = () => {
+    // Filter out the selected images to delete
+    const updatedImages = images.filter((image) => !image.isSelected)
+    setImages(updatedImages)
+    setSelectedImages([]) // Clear selected images
+  }
 
   return (
     <>
@@ -76,6 +77,12 @@ const handleDelete = () => {
               onSelect={handleSelect}
             />
           ))}
+          <div className='upload'>
+            <div className='box'>
+              <IoImageOutline />
+              <p>Add Images</p>
+            </div>
+          </div>
         </div>
       </div>
     </>
