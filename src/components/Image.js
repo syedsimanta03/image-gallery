@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { motion } from 'framer-motion'
 
 const Image = ({ image, isLarge, onSelect }) => {
   const handleCheckboxToggle = (e) => {
@@ -9,11 +9,15 @@ const Image = ({ image, isLarge, onSelect }) => {
 
   return (
     <div className={`image ${isLarge ? 'large-image' : ''}`}>
-      <div className='checkbox-overlay' onClick={handleCheckboxToggle}>
+      <motion.div
+        //initial={{ opacity: 0 }}
+       // whileHover={{ opacity: 1 }}
+        className='checkbox-overlay'
+        onClick={handleCheckboxToggle}
+      >
         <input type='checkbox' checked={image.isSelected} readOnly />
-      </div>
+      </motion.div>
       <img src={image.url} alt='Gallery' />
-
     </div>
   )
 }
