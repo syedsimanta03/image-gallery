@@ -49,12 +49,19 @@ const Gallery = () => {
     setSelectedImages(selected)
   }
 
+const handleDelete = () => {
+  // Filter out the selected images to delete
+  const updatedImages = images.filter((image) => !image.isSelected)
+  setImages(updatedImages)
+  setSelectedImages([]) // Clear selected images
+}
+
   return (
     <>
       {selectedImages.length > 0 && (
         <div className='navbar'>
           <h3 className='selected-count'>{selectedImages.length} selected</h3>
-          <button>
+          <button onClick={handleDelete}>
             <RiDeleteBin6Line /> Delete Files
           </button>
         </div>
