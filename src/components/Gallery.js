@@ -57,6 +57,35 @@ const Gallery = () => {
     setSelectedImages([]) // Clear selected images
   }
 
+  const handleDragStart = (e, id) => {
+    e.dataTransfer.setData('text/plain', id)
+  }
+
+  const handleDragOver = (e) => {
+    e.preventDefault()
+  }
+
+  const handleDrop = (e, id) => {
+    e.preventDefault()
+    const draggedId = e.dataTransfer.getData('text/plain')
+    if (draggedId !== id) {
+      const updatedImages = [...images]
+      const draggedIndex = updatedImages.findIndex(
+        (img) => img.id.toString() === draggedId
+      )
+      const droppedIndex = updatedImages.findIndex((img) => img.id === id)
+
+      // Swap the positions of the cards
+      ;[updatedImages[draggedIndex], updatedImages[droppedIndex]] = [
+        updatedImages[droppedIndex],
+        updatedImages[draggedIndex],
+      ]
+
+      setImages(updatedImages)
+    }
+  }
+
+
   return (
     <>
       <div className='navbar'>
@@ -69,7 +98,7 @@ const Gallery = () => {
           </>
         )}
         {selectedImages.length === 0 && (
-           <h3 className='selected-count'>Gallery</h3>
+          <h3 className='selected-count'>Gallery</h3>
         )}
       </div>
       <div className='gallery-area'>
@@ -80,6 +109,9 @@ const Gallery = () => {
               image={image}
               isLarge={index === 0}
               onSelect={handleSelect}
+              handleDragStart={handleDragStart}
+              handleDragOver ={handleDragOver }
+              handleDrop ={handleDrop }
             />
           ))}
           <div className='upload'>
