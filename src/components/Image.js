@@ -1,14 +1,10 @@
 import React from 'react'
 
-const Image = ({ image, isLarge, onSelect, index, moveImage }) => {
-  
-
-  
+const Image = ({ image, isLarge, onSelect }) => {
   const handleCheckboxToggle = (e) => {
     e.stopPropagation() // Prevent the image's click event from firing
     onSelect(image.id)
   }
-
 
   return (
     <div

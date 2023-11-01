@@ -57,22 +57,21 @@ const Gallery = () => {
     setSelectedImages([]) // Clear selected images
   }
 
-const moveImage = (fromIndex, toIndex) => {
-  const updatedImages = [...images]
-  const [movedImage] = updatedImages.splice(fromIndex, 1)
-  updatedImages.splice(toIndex, 0, movedImage)
-  setImages(updatedImages)
-}
   return (
     <>
-      {selectedImages.length > 0 && (
-        <div className='navbar'>
-          <h3 className='selected-count'>{selectedImages.length} selected</h3>
-          <button onClick={handleDelete}>
-            <RiDeleteBin6Line /> Delete Files
-          </button>
-        </div>
-      )}
+      <div className='navbar'>
+        {selectedImages.length > 0 && (
+          <>
+            <h3 className='selected-count'>{selectedImages.length} selected</h3>
+            <button onClick={handleDelete}>
+              <RiDeleteBin6Line /> Delete Files
+            </button>
+          </>
+        )}
+        {selectedImages.length === 0 && (
+           <h3 className='selected-count'>Gallery</h3>
+        )}
+      </div>
       <div className='gallery-area'>
         <div className='gallery'>
           {images.map((image, index) => (
@@ -81,7 +80,6 @@ const moveImage = (fromIndex, toIndex) => {
               image={image}
               isLarge={index === 0}
               onSelect={handleSelect}
-              moveImage={moveImage}
             />
           ))}
           <div className='upload'>
