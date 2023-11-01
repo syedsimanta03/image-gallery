@@ -17,7 +17,12 @@ const Image = ({
       onClick={handleCheckboxToggle}
       className={`image ${isLarge ? 'large-image' : ''}`}
     >
-      <input type='checkbox' checked={image.isSelected} readOnly />
+      <input
+        className={`${image.isSelected ? 'input-active' : ''}`}
+        type='checkbox'
+        checked={image.isSelected}
+        readOnly
+      />
       <div>
         <img
           key={image.id}
