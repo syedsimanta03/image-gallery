@@ -31,6 +31,12 @@ body {
   cursor: pointer;
 }
 
+
+.img-active {
+  filter: brightness(50%)
+}
+
+
 img {
   border: 1px solid #ffe5e5;
   border-radius: 10px;
@@ -81,6 +87,7 @@ button {
   gap: 5px;
   box-shadow: 0 0 10px rgba(220, 31, 31, 0.1);
   cursor: pointer;
+  border-radius: 4px;
 }
 
 .box {
@@ -103,3 +110,18 @@ button {
   border-radius: 10px;
   border: dashed 2px #ffe5e5;
 }
+
+/* .image input {
+  display: none;
+}
+
+.image:hover input {
+  display: block;
+}
+.input:active {
+  display: block;
+}
+.input:focus  {
+  display: block;
+}
+ */

@@ -57,6 +57,12 @@ const Gallery = () => {
     setSelectedImages([]) // Clear selected images
   }
 
+const moveImage = (fromIndex, toIndex) => {
+  const updatedImages = [...images]
+  const [movedImage] = updatedImages.splice(fromIndex, 1)
+  updatedImages.splice(toIndex, 0, movedImage)
+  setImages(updatedImages)
+}
   return (
     <>
       {selectedImages.length > 0 && (
@@ -75,6 +81,7 @@ const Gallery = () => {
               image={image}
               isLarge={index === 0}
               onSelect={handleSelect}
+              moveImage={moveImage}
             />
           ))}
           <div className='upload'>
