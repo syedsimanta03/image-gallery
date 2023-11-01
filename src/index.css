@@ -28,12 +28,17 @@ body {
 
 .gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-auto-rows: 1fr;
   grid-gap: 1em;
   grid-auto-flow: dense;
 }
-
+/* Media query for mobile view */
+@media (max-width: 485px) {
+  .gallery {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  }
+}
 .image {
   position: relative;
   max-width: initial;
@@ -59,7 +64,6 @@ img:hover {
 .gallery .large-image {
   grid-row: span 2;
   grid-column: span 2;
-  height: 98%;
 }
 
 .gallery-area {
