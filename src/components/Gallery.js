@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Image from './Image'
+import { motion, AnimatePresence } from 'framer-motion'
 
 const Gallery = () => {
   const [images, setImages] = useState([
@@ -109,17 +110,29 @@ const Gallery = () => {
       </div>
       <div className='gallery-area'>
         <div className='gallery'>
-          {images.map((image, index) => (
-            <Image
-              key={image.id}
-              image={image}
-              isLarge={index === 0}
-              onSelect={handleSelect}
-              handleDragStart={handleDragStart}
-              handleDragOver={handleDragOver}
-              handleDrop={handleDrop}
-            />
-          ))}
+          <AnimatePresence>
+            {images.map((image, index) => (
+              <motion.div
+                key={image.id}
+                initial={{ opacity: 0, scale: 0 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileInView={{ scale: 1, opacity: 1 }}
+                whileTap={{ scale: 1.3, cursor: 'grabbing' }}
+                exit={{ opacity: 0, scale: 0.95 }}
+                dragElastic={0.5}
+                transition={{ duration: 0.75, type: 'tween', stiffness: 260 }}
+                className={`${index === 0 ? 'large-image' : ''}`}
+              >
+                <Image
+                  image={image}
+                  onSelect={handleSelect}
+                  handleDragStart={handleDragStart}
+                  handleDragOver={handleDragOver}
+                  handleDrop={handleDrop}
+                />
+              </motion.div>
+            ))}
+          </AnimatePresence>
           <div className='upload'>
             <div className='box'>
               <svg

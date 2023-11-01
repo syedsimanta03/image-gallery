@@ -2,7 +2,6 @@ import React from 'react'
 
 const Image = ({
   image,
-  isLarge,
   onSelect,
   handleDragStart,
   handleDragOver,
@@ -15,10 +14,10 @@ const Image = ({
   return (
     <div
       onClick={handleCheckboxToggle}
-      className={`image ${isLarge ? 'large-image' : ''}`}
+      className='image'
     >
       <input
-        className={`${image.isSelected ? 'input-active' : ''}`}
+        className={`anim ${image.isSelected ? 'input-active' : ''}`}
         type='checkbox'
         checked={image.isSelected}
         readOnly
@@ -30,7 +29,7 @@ const Image = ({
           onDragStart={(e) => handleDragStart(e, image.id)}
           onDragOver={(e) => handleDragOver(e)}
           onDrop={(e) => handleDrop(e, image.id)}
-          className={`${image.isSelected ? 'img-active' : ''}`}
+          className={`anim ${image.isSelected ? 'img-active' : ''}`}
           src={image.url}
           alt='Gallery'
         />

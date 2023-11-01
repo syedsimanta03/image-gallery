@@ -87,13 +87,13 @@ input {
   border: 2px solid #007bff;
 }
 .navbar {
-  padding: 20px 20px 20px 40px;
+  margin: 20px;
   display: flex;
   justify-content: space-between;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 1rem 1.1rem;
   background: #c4423f;
   color: #fff;
   display: flex;
@@ -102,9 +102,11 @@ button {
   align-items: center;
   box-shadow: 0 0 10px rgb(220 31 31 / 40%);
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 10px;
   border: 0;
+  height: 100%;
 }
+
 button:hover {
   box-shadow: none;
   cursor: pointer;
@@ -140,4 +142,8 @@ button:hover {
 
 .input-active {
   display: block !important;
+}
+
+.anim {
+  transition: all 0.75s ease;
 }
