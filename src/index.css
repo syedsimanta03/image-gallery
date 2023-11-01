@@ -87,7 +87,7 @@ input {
   border: 2px solid #007bff;
 }
 .navbar {
-  padding: 20px 20px 0 40px;
+  padding: 20px 20px 20px 40px;
   display: flex;
   justify-content: space-between;
 }
